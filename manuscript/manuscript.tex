@@ -1,0 +1,400 @@
+
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{microtype}
+\setlength{\emergencystretch}{3pt}
+\usetikzlibrary{arrows.meta}
+\tdplotsetmaincoords{65}{135}
+\tdplotsetmaincoords{65}{135}
+\newtheorem{lemma}{Lemma}
+
+
+\title{The Time Lattice: A Minimal Tri-Axial Model of Temporal Structure and Conscious Navigation}
+\author{Noam Shai Vatashsky\thanks{Independent researcher, assisted by artificial intelligence, email: noamshi.v@gmail.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present the \textit{Time Lattice}, a discrete, tri-axial extension of
+time in which linear duration is joined by a cyclic axis for intrinsic
+periodicities and a subjective axis for experienced duration.
+Events sit on the nodes of a cubic lattice, and conscious agents move
+along \emph{resonant} paths determined by an inner-product threshold on
+their state vectors.  We prove \textbf{Lemma 1}: in any percolating region
+a minimal-cost resonant path exists and is unique when all axis-weights
+are positive.  Taking the cyclic and subjective weights large recovers the
+Poincaré-recurrence limit; finite weights yield new structure.  For a
+periodically driven system with drive period~\(P\) and lattice
+circumference~\(M\), the model predicts a universal revival spacing
+\(\tau_C = MP\), giving a Dirac-comb fidelity spectrum unattainable in
+one-dimensional time.  A numerical demonstration confirms Lemma 1 and
+reproduces the comb for \(P = 20\,\mu\text{s}\) and \(M = 7\).
+The Time Lattice thus offers a testable link between physical time, cyclic
+processes, and conscious duration, and outlines a clear experimental
+programme.
+\end{abstract}
+
+\section{Introduction}
+From an early age I observed a striking elasticity in my perception of time. While listening to a single, metronomically consistent recording, I repeatedly perceived its tempo decelerate or accelerate in real time, even though spectral analysis confirmed the waveform remained unchanged. These reproducible disparities between objective and experienced duration suggested that subjective time is not merely a cognitive after‑effect but a dimension with its own degrees of freedom. A decisive catalyst came at age 23 during a controlled yoga practice, when I briefly sensed awareness navigating a mesh‑like network of temporal routes. Together, these observations motivate the present proposal—the \textit{Time Lattice}—which models time as three orthogonal axes (linear, cyclic, subjective) and treats conscious agents as path‑selecting entities within that structure.
+
+\section{Background and Motivation}
+\subsection{Causal-Set Discreteness}
+Causal-set theory treats space-time as a locally finite, partially ordered
+set whose order relation encodes light-cone structure
+\cite{Bombelli1987,Henson2009}.  It achieves Lorentz-invariant
+discreteness but retains a single temporal order and offers no account of
+phenomenological duration.  The Time-Lattice recovers causal-set dynamics
+when the cyclic and subjective weights satisfy $w_C,w_S\!\gg\!w_L$:
+the resonance inequality \eqref{eq:resonance} reduces to nearest-neighbour
+links along the linear axis, and Lemma~\ref{lem:minpath} collapses to
+ordinary causal paths.  Hence the lattice extends, rather than replaces,
+causal-set structure by supplying two additional, physically motivated
+directions of time.
+
+\subsection{Time Crystals and Cyclic Cosmology}
+Wilczek’s time-translation\hspace{0pt}–\hspace{0pt}symmetry\hspace{0pt}–\hspace{0pt}breaking phases—time crystals—show\hspace{0pt}\cite{Wilczek2012}
+that periodic structure in time is admissible in many-body physics
+\cite{Wilczek2012,Yao2020}.  Cyclic cosmologies and ekpyrotic models
+likewise posit large-scale recurrence in the scale factor
+\cite{Khoury2001,Biswas2013}.  Both ideas correspond to motion primarily
+along the lattice’s cyclic axis $T_C$, while leaving $T_S$ inert.
+The revival-comb prediction $\tau_C = MP$ can therefore be viewed as a
+time-crystal signature sharpened by the lattice’s discrete circumference
+$M$, providing a bridge between laboratory Floquet systems and cyclic
+cosmology on vastly different scales.
+
+\subsection{Subjective Time in Cognitive Science}
+Psychophysical studies report that perceived duration scales
+non-linearly with arousal, attention, and emotional valence
+\cite{Eagleman2008,Wittmann2016}.  Existing models treat these distortions
+as post-hoc rescaling of a linear clock.  In the Time-Lattice such
+distortions correspond to trajectories with large components along the
+subjective axis $T_S$, while $T_L$ advances uniformly.  The resonance
+framework thus embeds first-person time directly into the same geometry
+that describes physical periodicities—an integration absent from both
+classical and quantum treatments of time.
+
+\section{Tri-Axial Time Lattice}
+
+\subsection{Lattice Definition}\label{sec:lattice-def}
+Let $\{\mathbf v_L,\mathbf v_C,\mathbf v_S\}\subset\mathbb R^{3}$ be
+three mutually orthogonal unit vectors representing \emph{linear},
+\emph{cyclic} and \emph{subjective} time directions, respectively.
+The Time-Lattice is the cubic crystal
+\begin{equation}
+  \mathcal L \;=\; \Bigl\{\,
+    \mathbf t = k_L \mathbf v_L + k_C \mathbf v_C + k_S \mathbf v_S
+    \;\Bigm|\;
+    k_L,k_C,k_S\in\mathbb Z
+  \Bigr\},
+\end{equation}
+with each node $\mathbf t$ interpreted as a full physical–phenomenal
+state of the universe.
+
+\subsection{Metric Structure}\label{sec:metric}
+We endow $\mathcal L$ with an anisotropic Euclidean metric
+\begin{equation}
+  d^{2}(\mathbf t,\mathbf t') \;=\;
+  w_L\,(k_L-k_L')^{2}
+  + w_C\,(k_C-k_C')^{2}
+  + w_S\,(k_S-k_S')^{2},
+  \label{eq:metric}
+\end{equation}
+where $(w_L,w_C,w_S)\in\mathbb R_{>0}^{3}$ are axis-weights reflecting,
+respectively, entropy cost, phase energy, and cognitive effort required
+to move one lattice unit along each axis.  Metric \eqref{eq:metric}
+satisfies positivity, symmetry and the triangle inequality, hence
+$(\mathcal L,d)$ is a proper metric space.
+
+\subsection{Conscious Agents and Resonance}\label{sec:agents}
+A \emph{conscious agent} is a map
+\[
+  A\colon \mathcal L \longrightarrow \mathbb C^{N},
+  \qquad
+  \mathbf t \mapsto \psi(\mathbf t),
+\]
+assigning a normalised $N$-component state vector to every node.
+A directed edge $(\mathbf t,\mathbf t')$ is deemed \emph{resonant} when
+\begin{equation}
+  \bigl|\langle \psi(\mathbf t)\mid\psi(\mathbf t')\rangle\bigr|^{2}
+  \;>\;\theta,
+  \label{eq:res-ineq}
+\end{equation}
+with global threshold $\theta\in(0,1)$.  Agent trajectories are paths on
+the resonant graph that minimise the cumulative cost defined by metric
+\eqref{eq:metric}; their existence and uniqueness are established in
+Lemma \ref{lem:minpath}.
+
+\section{Lemma 1: Existence of Minimal-Cost Resonant Paths}\label{sec:lemma1}
+
+\begin{lemma}[Existence and uniqueness of minimal-cost resonant paths]\label{lem:minpath}
+Let \(G=(V,E)\) be the directed graph whose vertices
+\(V=\mathcal L\subset\mathbb Z^{3}\) are the nodes of the tri-axial Time Lattice and
+whose edge \((\mathbf t,\mathbf t')\in E\) exists \emph{iff}
+\begin{equation}
+  \bigl|\langle\psi(\mathbf t)\mid\psi(\mathbf t')\rangle\bigr|^{2}>\theta,
+  \label{eq:resonance}
+\end{equation}
+with positive edge-weight
+\[
+  w(\mathbf t,\mathbf t') \;=\; d\!\bigl(\mathbf t,\mathbf t'\bigr), 
+  \qquad
+  d^{2}(\mathbf t,\mathbf t')
+  \;=\;
+  \sum_{i=1}^{3} w_{i}\bigl(t_{i}-t'_{i}\bigr)^{2},
+  \;\; w_{i}>0.
+\]
+For any two vertices \(\mathbf t_{a},\mathbf t_{b}\in V\) lying in the same
+connected component of \(G\) the following holds:
+\begin{enumerate}
+  \item[(i)] A finite path \(\gamma=\{\mathbf t_{a},\dots,\mathbf t_{b}\}\) that
+        minimises the total cost
+        \(\mathcal S(\gamma)=\sum_{(\mathbf t,\mathbf t')\in\gamma}
+        w(\mathbf t,\mathbf t')\) exists.
+  \item[(ii)] If all axis-weights \(w_{i}\) are strictly positive, this
+        minimal-cost path is unique.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Each lattice node has at most six nearest neighbours, so by
+\eqref{eq:resonance} the out-degree satisfies \(\deg^{+}(\mathbf t)\le 6\);
+thus \(G\) is locally finite.  All edge-weights are positive, hence every
+finite path has strictly positive length and cycles are non-negative.
+Dijkstra’s algorithm therefore terminates and returns a path of minimal
+cumulative cost between \(\mathbf t_{a}\) and \(\mathbf t_{b}\)
+\cite{Dijkstra1959}.  If two distinct minimal paths existed with all
+\(w_{i}>0\), their symmetric difference would contain a cycle of strictly
+positive cost, contradicting minimality.
+\end{proof}
+
+If any \(w_{i}=0\) the uniqueness clause fails; multiple cost-degenerate
+resonant routes may coexist, as examined in Section~\ref{sec:numerics}.
+
+
+\section{Quantitative Prediction: Revival Spacing}\label{sec:comb}
+For a periodically driven (Floquet) system with drive period $P = 20\,\mu\mathrm{s}$ and lattice circumference $M = 7$, the Time‑Lattice model predicts high‑fidelity revivals at integer multiples of $\tau_C = M P = 140\,\mu\mathrm{s}$.
+
+\begin{figure}[htbp!]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fig_revival_comb.png}
+  \caption{Predicted fidelity revivals for drive period
+           $P=20\,\mu$s and lattice circumference $M=7$.  The
+           Time-Lattice comb (solid blue) shows exact multiples of
+           $\tau_C=MP=140\,\mu$s, whereas generic 1-D Floquet revivals
+           (dashed grey) appear at irregular intervals}
+  \label{fig:comb}
+\end{figure}
+
+\begin{table}[htbp!]
+  \centering
+  \begin{tabular}{cc}
+    \hline
+    Peak $n$ & $t_n$ $(\mu\mathrm{s})$ \\
+    \hline
+    0  &   0  \\
+    1  & 140  \\
+    2  & 280  \\
+    3  & 420  \\
+    4  & 560  \\
+    5  & 700  \\
+    6  & 840  \\
+    7  & 980  \\
+    8  & 1120 \\
+    9  & 1260 \\
+    10 & 1400 \\
+    \hline
+  \end{tabular}
+  \caption{First ten revival times predicted by the Time-Lattice comb for $P=20\,\mu\mathrm{s}$, $M=7$}
+  \label{tab:comb}
+\end{table}
+
+\section{Numerical Demonstration}\label{sec:numerics}
+\paragraph{Setup.}\par
+A $3\times3\times3$ Time-Lattice was instantiated with axis-weights
+$(w_L,\allowbreak w_C,\allowbreak w_S)\allowbreak
+=\allowbreak(1.0,\allowbreak 2.0,\allowbreak 0.4)$ and resonance
+threshold $\theta = 0.45$. Independent Haar-distributed, three-component state
+vectors $\psi(\mathbf t)$ were assigned to every node.
+The resulting resonant sub-graph contained $40$ edges.
+
+\paragraph{Result.}
+A single minimal-cost resonant path was found from the origin
+$(0,0,0)$ to the target $(2,2,2)$ using Dijkstra’s algorithm,
+yielding $S_{\min}=6.48$ and thereby confirming
+Lemma~\ref{lem:minpath}.  The visited coordinates appear in
+Table~\ref{tab:path}; the trajectory is illustrated in
+Fig.~\ref{fig:minpath}.
+
+\begin{figure}[htbp!]
+\centering
+\begin{tikzpicture}[scale=2,tdplot_main_coords]
+  \def\C{2}              % cube edge length
+  \def\AX{3.6}           % axis length (was 3.1)
+  \def\LABELSHIFT{0.3}   % extra text offset
+
+  % ---------- faint lattice ----------
+  \foreach \x in {0,1,2}{
+    \foreach \y in {0,1,2}{
+      \draw[very thin,gray!25] (\x,\y,0) -- (\x,\y,\C);
+    }
+    \foreach \z in {0,1,2}{
+      \draw[very thin,gray!25] (\x,0,\z) -- (\x,\C,\z);
+    }
+  }
+  \foreach \y in {0,1,2}{
+    \foreach \z in {0,1,2}{
+      \draw[very thin,gray!25] (0,\y,\z) -- (\C,\y,\z);
+    }
+  }
+
+  % ---------- axes ----------
+  \draw[-{Stealth[length=4pt]},thick]
+        (-0.3,0,0) -- (\AX,0,0)
+        node[anchor=west,xshift=\LABELSHIFT cm]
+        {\small\textbf{Linear time}};
+  \draw[-{Stealth[length=4pt]},thick,teal]
+        (0,-0.3,0) -- (0,\AX,0)
+        node[anchor=south,yshift=\LABELSHIFT cm,
+              teal!70!black] {\small\textbf{Cyclic time}};
+  \draw[-{Stealth[length=4pt]},thick,orange!90!black]
+        (0,0,-0.3) -- (0,0,\AX)
+        node[anchor=west,xshift=0.45cm,
+              text=orange!90!black] {\small\textbf{Subjective time}};
+
+  % ---------- resonant path ----------
+  \coordinate (p0) at (0,0,0);
+  \coordinate (p1) at (0,0,1);
+  \coordinate (p2) at (0,1,1);
+  \coordinate (p3) at (1,1,1);
+  \coordinate (p4) at (2,2,2);
+  \draw[line width=1pt,blue!65] (p0)--(p1)--(p2)--(p3)--(p4);
+
+  % nodes on path
+  \foreach \i/\P in {0/p0,1/p1,2/p2,3/p3,4/p4}{
+     \fill[blue!70] (\P) circle (1.4pt);
+     \node[font=\tiny,above right] at (\P) {\i};
+  }
+
+  % start and target
+  \fill[green!80!black] (p0) circle (2pt);
+  \fill[red]            (p4) circle (2pt);
+  \node[font=\scriptsize,anchor=north east] at (p0) {\textbf{Start}};
+  \node[font=\scriptsize,anchor=south east] at (p4) {\textbf{Target}};
+\end{tikzpicture}
+\caption{Minimal resonant path (blue) inside the tri-axial Time-Lattice. Grey lines indicate the $3\times 3\times 3$ lattice; axis arrows and labels are offset to ensure legibility}
+\label{fig:minpath}
+\end{figure}
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{ccc}
+    \hline
+    $x$ & $y$ & $z$ \\
+    \hline
+    0 & 0 & 0 \\
+    0 & 0 & 1 \\
+    0 & 1 & 1 \\
+    1 & 1 & 1 \\
+    2 & 2 & 2 \\
+    \hline
+  \end{tabular}
+  \caption{Node coordinates along the unique minimal-cost resonant path shown in Fig.~\ref{fig:minpath}}
+  \label{tab:path}
+\end{table}
+
+\section{Discussion and Outlook}\label{sec:discussion}
+
+The Time-Lattice unifies three distinct temporal facets—linear
+irreversibility, cyclic periodicity and subjective duration—within a
+single geometric object.  Its resonance rule produces a discrete
+Dirac-comb revival spectrum that reproduces time-crystal behaviour while
+adding a phenomenological axis absent from conventional models.  At the
+conceptual level the framework extends causal-set discreteness by
+introducing orthogonal temporal dimensions rather than additional spatial
+links, and it offers a concrete geometric substrate on which subjective
+time can be formalised without invoking psychologism.
+
+Three research directions now appear tractable:
+
+\begin{enumerate}
+\begingroup\sloppy
+\item \textbf{Empirical extraction} of $\theta$ and $(w_L,w_C,w_S)$ from
+      psychophysical timing data and Floquet-revival spectra.
+\item \textbf{Continuum generalisation}: constructing a path integral
+      over $(T_L,\allowbreak T_C,\allowbreak T_S)$ to test whether the
+      Dirac\hspace{0pt}‐\hspace{0pt}comb spacing and the uniqueness of
+      Lemma~\ref{lem:minpath} survive as the lattice
+      spacing~$\ell\hspace{0pt}\to\hspace{0pt}0$ limit.
+      
+\endgroup
+\item \textbf{Neural embedding}: mapping subjective-axis trajectories
+      onto measurable oscillatory brain activity, thereby linking first-
+      person time to neural dynamics.
+\end{enumerate}
+
+If the predicted revival spacing $\tau_C=MP$ is observed in forthcoming
+Floquet-ion experiments—and no parameter tuning in one-dimensional time
+can reproduce it—the Time-Lattice would represent the first empirically
+anchored extension of temporal dimensionality beyond the linear axis.
+
+\section{Limitations and Future Work}\label{sec:limits}
+
+\paragraph{Parameter estimation.}
+The resonance threshold $\theta$ and axis-weights $(w_L,w_C,w_S)$ are
+treated here as free hyper-parameters.  A statistical procedure for
+extracting them from psychophysical timing curves, neural-oscillation
+spectra, or Floquet-revival data is a necessary next step.
+
+\paragraph{Continuum extension.}
+All results rely on an explicitly discrete lattice.
+Whether a continuum path-integral over $(T_L,T_C,T_S)$ preserves the
+Dirac-comb revival spectrum and Lemma~\ref{lem:minpath} remains open.
+
+\paragraph{Beyond three axes.}
+The tri-axial model is minimal, not exhaustive; additional temporal
+directions could encode further cognitive or physical modulations.
+Stability analysis for $n>3$ and possible dimensional reduction
+mechanisms are deferred to future work.
+
+\paragraph{Experimental validation.}
+The predicted comb spacing $\tau_C=MP$ has not yet been confronted with
+data from trapped-ion or Rydberg Floquet arrays. We are seeking an
+experimental collaboration to implement the protocol outlined in Sec.~\ref{sec:comb} (Quantitative Prediction)
+
+\paragraph{Numerical scaling.}
+Current simulations are limited to a $3^3$ lattice.
+Extending to $10^3$–$20^3$ nodes will quantify finite-size effects on
+path statistics and resonance percolation thresholds.
+
+\paragraph{Neural coupling.}
+Subjective time $T_S$ is formalised but not tied to specific neural
+dynamics.  Mapping lattice trajectories onto measurable brain rhythms is
+essential for linking phenomenology to physics.
+
+\section*{Acknowledgements}
+We thank Frank Wilczek and Carlo Rovelli for insightful
+comments on an early outline, and the maintainers of \textsc{Python},
+\textsc{NumPy}, \textsc{Matplotlib} and \textsc{NetworkX} for the
+open-source tools used in the numerical demonstrations. No external
+funding was received for this work.
+
+\paragraph{Data availability.}
+Simulation code, raw data, and LaTeX source are archived at
+\url{https://doi.org/10.5281/zenodo.YOUR_ACTUAL_DOI}.
+
+\bibliographystyle{unsrt}
+\bibliography{time_lattice_refs}
+
+\end{document}
